@@ -1,5 +1,5 @@
 /*
-酷我音乐
+酷我音乐 来自 NobyDa
 ^https?:\/\/vip1\.kuwo\.cn\/(vip\/v2\/user\/vip|vip\/spi/mservice) url script-response-body https://raw.githubusercontent.com/mysteriozj/Script/master/js/Kuwo.js
 
 ^https?:\/\/musicpay\.kuwo\.cn\/music\.pay\?uid\=\d+ url 302 http://musicpay.kuwo.cn/music.pay?uid=1
