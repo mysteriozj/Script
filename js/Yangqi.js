@@ -1,6 +1,6 @@
 /*
 氧气
-^https:\/\/api\.o2ting\.com\/api\/V2\/user\/GetUserInfo\.json
+^https:\/\/api\.o2ting\.com\/api\/V2\/user\/GetUserInfo\.json.*
 
 hostname = api.o2ting.com
 */
