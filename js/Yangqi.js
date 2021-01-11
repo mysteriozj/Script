@@ -3,8 +3,7 @@
 ^https:\/\/api\.o2ting\.com\/api\/V2\/(userc\/GetUserInfo|audio\/GetAudioListByIndex)\.json.*
 
 hostname = api.o2ting.com
-*/
-/*
+
 var body = $response.body;
 var obj = JSON.parse(body);
 
