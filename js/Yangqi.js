@@ -9,8 +9,8 @@ var body = $response.body;
 var obj = JSON.parse(body);
 
 obj.userInfo.isMember = true;
-obj.userInfo.startDate = 2020-09-17 12:30:45;
-obj.userInfo.endDate = 2099-09-17 12:19:19;
+obj.userInfo.startDate = "2020-09-17 12:30:45";
+obj.userInfo.endDate = "2099-09-17 12:19:19";
 
 body = JSON.stringify(obj);
 $done({body});
