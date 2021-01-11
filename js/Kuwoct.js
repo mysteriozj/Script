@@ -15,15 +15,15 @@ const info = '/api/user/info*';
 const vip = '/a.p*';
 
 if (url.indexOf(info) != -1) {
-	obj["vipExpires"] = "4070952349";
-	obj["vipType"] = "1";
+	obj["vipExpires"] = 4070952349;
+	obj["vipType"] = 1;
 	body = JSON.stringify(obj);
  }
  if (url.indexOf(vip) != -1) {
-	obj["limitfree"] = "1";
-	obj["downright"] = "1";
-	obj["playright"] = "1";
-	obj["policytype"] = "1";
+	obj["limitfree"] = 1;
+	obj["downright"] = 1;
+	obj["playright"] = 1;
+	obj["policytype"] = 1;
 	obj["pay"] = "0";
 	body = JSON.stringify(obj);
  }
