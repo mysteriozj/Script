@@ -15,8 +15,8 @@ const info = '/api/user/info*';
 const vip = '/a.p*';
 
 if (url.indexOf(info) != -1) {
-	obj["vipExpires"] = 4070952349;
-	obj["vipType"] = 1;
+	obj.data.vipExpires = 4070952349;
+	obj.data.vipType = 1;
 	body = JSON.stringify(obj);
  }
  if (url.indexOf(vip) != -1) {
