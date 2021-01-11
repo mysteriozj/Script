@@ -1,7 +1,7 @@
 /*
 酷我听书
 ^http:\/\/tingshu\.kuwo\.cn\/v2\/api\/user\/info*
-^https:\/\/audiobookpay\.kuwo\.cn\/a\.p*
+^https:\/\/audiobookpay\.kuwo\.cn\/a\.p
 
 hostname = tingshu.kuwo.cn,audiobookpay.kuwo.cn
 */
@@ -14,7 +14,7 @@ var url = $request.url;
 var obj = JSON.parse(body);
 
 const info = '/user/info*';
-const vip = '/a.p*';
+const vip = '/a.p';
 
 if (url.indexOf(info) != -1) {
 	obj["vipExpires"] = "4071731352";
