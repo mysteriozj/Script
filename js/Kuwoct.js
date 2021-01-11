@@ -1,6 +1,6 @@
 /*
 酷我听书
-^http:\/\/tingshu\.kuwo\.cn\/v2\/api\/user\/info
+^http:\/\/tingshu\.kuwo\.cn\/v2\/api\/user\/info*
 ^https:\/\/audiobookpay\.kuwo\.cn\/a\.p*
 
 hostname = tingshu.kuwo.cn,audiobookpay.kuwo.cn
@@ -10,7 +10,7 @@ var body = $response.body;
 var url = $request.url;
 var obj = JSON.parse(body);
 
-const info = '/api/user/info';
+const info = '/api/user/info*';
 
 const vip = '/a.p*';
 
