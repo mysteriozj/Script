@@ -146,7 +146,7 @@ if (!COOKIE.iboxpayheaderVal) {
             CASH = $.getval("iboxpayCASH") || '0';
         }
         if ("iboxpayLIVE") {
-            LIVE = $.getval("iboxpayLIVE") || '0';
+            LIVE = $.getval("iboxpayLIVE") || '61';
         }
         let iboxpayCount = ($.getval('iboxpayCount') || '1') - 0;
         for (let i = 2; i <= iboxpayCount; i++) {
