@@ -91,7 +91,7 @@ let refreshtokenVal = ``;
 let middlerefreshTOKEN = [];
 if ($.isNode()) {
     // 没有设置 XP_CASH 则默认为 0 不提现
-    CASH = process.env.XP_CASH || 0;
+    CASH = process.env.XP_CASH || 1;
     // 没有设置 XP_live 则默认0
     LIVE = process.env.XP_live || 61;
 }
@@ -143,7 +143,7 @@ if (!COOKIE.iboxpayheaderVal) {
         refreshtokenArr.push($.getdata("refreshtoken"));
         // 根据boxjs中设置的额外账号数，添加存在的账号数据进行任务处理
         if ("iboxpayCASH") {
-            CASH = $.getval("iboxpayCASH") || '0';
+            CASH = $.getval("iboxpayCASH") || '1';
         }
         if ("iboxpayLIVE") {
             LIVE = $.getval("iboxpayLIVE") || '61';
