@@ -1,5 +1,6 @@
 /*
-美颜相机
+美颜相机  2022.10.14
+版本：11.1.80
 ^https:\/\/api\.meiyan\.com\/vip\/user_info\.json
 https://api.meiyan.com/vip/user_info.json
 [MITM]
