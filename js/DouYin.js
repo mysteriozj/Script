@@ -1,215 +1,69 @@
-/*
-抖音去广告, 去水印. 改自https://github.com/Choler/Surge/blob/master/Script/douyin.js
-
-***************************
-Surge 4.2+ :
-
-[Script]
-抖音去广告&水印req = type=http-request,pattern=^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
-
-抖音去广告&水印res = type=http-response,pattern=^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
-
-[MITM]
-hostname = *.amemv.com
-
-***************************
-***************************
-QuantumultX 1.0.10+ :
-
-[rewrite_local]
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/ url script-request-header https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
-
-^https?:\/\/.+?\.amemv\.com\/aweme\/v\d\/(feed|aweme\/post|follow\/feed|nearby\/feed|search\/item|general\/search\/single|hot\/search\/video\/list)\/ url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/Aweme.js
-
-[mitm]
-hostname = *.amemv.com
-***************************
-*/
-
-const path1 = "/feed/"; // 推荐
-const path2 = "/aweme/post/"; //作品
-const path3 = "/follow/feed/"; // 关注
-const path4 = "/nearby/feed/"; // 同城
-const path5 = "/search/item/"; // 视频
-const path6 = "/general/search/"; // 综合
-const path7 = "/hot/search/video/"; // 热搜
+const enabled_live = false; // 开启直播推荐，默认关闭
 
 try {
-  if (typeof $response != "undefined") {
-    if ($request.url.indexOf(path1) != -1) {
-      feed();
-    } else if ($request.url.indexOf(path2) != -1) {
-      post();
-    } else if ($request.url.indexOf(path3) != -1) {
-      follow();
-    } else if ($request.url.indexOf(path4) != -1) {
-      nearby();
-    } else if ($request.url.indexOf(path5) != -1) {
-      item();
-    } else if ($request.url.indexOf(path6) != -1) {
-      search();
-    } else if ($request.url.indexOf(path7) != -1) {
-      hot();
-    } else {
-      $done({});
-    }
-  } else {
-    $done({
-      url: $request.url.replace(/\/v\d\//, "/v1/")
-    });
-  }
-} catch {
+  let body = $response.body.replace(/\"room_id\":(\d{2,})/g,'"room_id":"$1"');
+  let obj = JSON.parse(body);
+  if (obj.data) obj.data = filter_data(obj.data);
+  if (obj.aweme_list) obj.aweme_list = filter_aweme_list(obj.aweme_list);
+  if (obj.aweme_detail) obj.aweme_detail = filter_aweme_detail(obj.aweme_detail);
+  $done({ body: JSON.stringify(obj) });
+} catch (error) {
+  console.log("脚本运行错误，跳过处理。\n" + error);
   $done({});
 }
 
-function feed() {
-  let obj = JSON.parse($response.body);
-  let arr = obj.aweme_list;
-  for (var i = arr.length - 1; i >= 0; i--) {
-    if (arr[i].is_ads != false) {
-      arr.splice(i, 1);
-    }
-    let play = arr[i].video.play_addr.url_list;
-    arr[i].video.download_addr.url_list = play;
-    let download = arr[i].video.download_addr;
-    arr[i].video.download_suffix_logo_addr = download;
-    arr[i].status.reviewed = 1;
-    arr[i].video_control.allow_download = true;
-    arr[i].author.room_id = 0;
-    arr[i].video.misc_download_addrs = {};
-  }
-  $done({
-    body: JSON.stringify(obj)
-  });
-}
-
-function post() {
-  let obj = JSON.parse($response.body);
-  let arr = obj.aweme_list;
-  if (arr != null) {
-    for (var i = arr.length - 1; i >= 0; i--) {
-      arr[i].status.reviewed = 1;
-      arr[i].video_control.allow_download = true;
-      let play = arr[i].video.play_addr.url_list;
-      arr[i].video.download_addr.url_list = play;
-      let download = arr[i].video.download_addr;
-      arr[i].video.download_suffix_logo_addr = download;
+function filter_data(data) {
+  if (data && data.length > 0) {
+    let i = data.length;
+    while (i--) {
+      let element = data[i].aweme;
+      if (element.images) filter_images(element.images);
+      if (element.video) filter_videos(element);
     }
   }
-  $done({
-    body: JSON.stringify(obj)
-  });
+  return data;
 }
 
-function follow() {
-  let obj = JSON.parse($response.body);
-  let arr = obj.data;
-  for (var i = arr.length - 1; i >= 0; i--) {
-    arr[i].aweme.status.reviewed = 1;
-    arr[i].aweme.video_control.allow_download = true;
-    let play = arr[i].aweme.video.play_addr.url_list;
-    arr[i].aweme.video.download_addr.url_list = play;
-    let download = arr[i].aweme.video.download_addr;
-    arr[i].aweme.video.download_suffix_logo_addr = download;
-  }
-  $done({
-    body: JSON.stringify(obj)
-  });
-}
-
-function nearby() {
-  let obj = JSON.parse($response.body);
-  if (obj.aweme_list) {
-    for (var i = obj.aweme_list.length - 1; i >= 0; i--) {
-      if (obj.aweme_list[i].video) {
-        if (obj.aweme_list[i].status.reviewed != 1) {
-          obj.aweme_list[i].status.reviewed = 1;
-          obj.aweme_list[i].video_control.allow_download = true;
-        }
-        if (obj.aweme_list[i].video.download_addr) {
-          let play = obj.aweme_list[i].video.play_addr.url_list;
-          obj.aweme_list[i].video.download_addr.url_list = play;
-        }
-        if (obj.aweme_list[i].video.download_suffix_logo_addr) {
-          let download = obj.aweme_list[i].video.download_addr;
-          obj.aweme_list[i].video.download_suffix_logo_addr = download;
-        }
+function filter_aweme_list(aweme_list) {
+  if (aweme_list && aweme_list.length > 0) {
+    let i = aweme_list.length;
+    while (i--) {
+      let element = aweme_list[i];
+      if (element.is_ads == true) {
+        aweme_list.splice(i, 1);
+      } else if (element.images) {
+        filter_images(element.images);
+      } else if (element.video) {
+        filter_videos(element);
       } else {
-        obj.aweme_list.splice(i, 1);
+        if (!enabled_live) aweme_list.splice(i, 1);
       }
     }
   }
-  $done({
-    body: JSON.stringify(obj)
-  });
+  return aweme_list;
 }
 
-function item() {
-  let obj = JSON.parse($response.body);
-  if (obj.aweme_list) {
-    for (var i = obj.aweme_list.length - 1; i >= 0; i--) {
-      if (obj.aweme_list[i].video) {
-        if (obj.aweme_list[i].status.reviewed != 1) {
-          obj.aweme_list[i].status.reviewed = 1;
-          obj.aweme_list[i].video_control.allow_download = true;
-        }
-        if (obj.aweme_list[i].video.download_addr) {
-          let play = obj.aweme_list[i].video.play_addr.url_list;
-          obj.aweme_list[i].video.download_addr.url_list = play;
-        }
-        if (obj.aweme_list[i].video.download_suffix_logo_addr) {
-          let download = obj.aweme_list[i].video.download_addr;
-          obj.aweme_list[i].video.download_suffix_logo_addr = download;
-        }
-      }
-    }
-  }
-  $done({
-    body: JSON.stringify(obj)
-  });
+function filter_aweme_detail(aweme_detail) {
+  if (aweme_detail.images) filter_images(aweme_detail.images);
+  if (aweme_detail.video) filter_videos(aweme_detail);
+  return aweme_detail;
 }
 
-function search() {
-  let obj = JSON.parse($response.body);
-  let arr = obj.data;
-  for (var i = arr.length - 1; i >= 0; i--) {
-    if (arr[i].type == 1) {
-      if (arr[i].aweme_info.is_ads) {
-        arr.splice(i, 1);
-      }
-      if (arr[i].aweme_info.video) {
-        let play = arr[i].aweme_info.video.play_addr.url_list;
-        arr[i].aweme_info.video.download_addr.url_list = play;
-        let download = arr[i].aweme_info.video.download_addr;
-        arr[i].aweme_info.video.download_suffix_logo_addr = download;
-        arr[i].aweme_info.status.reviewed = 1;
-        arr[i].aweme_info.video_control.allow_download = true;
-      }
-    }
+function filter_images(images) {
+  let j = images.length;
+  while (j--) {
+    images[j].download_url_list = images[j].url_list;
   }
-  $done(file:///F:/tg视频、图/抖音无水印.js{
-    body: JSON.stringify(obj)
-  });
+  return images;
 }
 
-function hot() {
-  let obj = JSON.parse($response.body);
-  if (obj.aweme_list) {
-    for (var i = obj.aweme_list.length - 1; i >= 0; i--) {
-      if (obj.aweme_list[i].video.download_addr) {
-        let play = obj.aweme_list[i].video.play_addr.url_list;
-        obj.aweme_list[i].video.download_addr.url_list = play;
-      }
-      if (obj.aweme_list[i].video.download_suffix_logo_addr) {
-        let download = obj.aweme_list[i].video.download_addr;
-        obj.aweme_list[i].video.download_suffix_logo_addr = download;
-      }
-      if (obj.aweme_list[i].video.misc_download_addrs) {
-        obj.aweme_list[i].video.misc_download_addrs = {};
-      }
-    }
-  }
-  $done({
-    body: JSON.stringify(obj)
-  });
+function filter_videos(videos) {
+  videos.status.reviewed = 1;
+  videos.video_control.allow_download = true;
+  videos.video_control.prevent_download_type = 0;
+  delete videos.video.misc_download_addrs;
+  const play_url = videos.video.play_addr;
+  videos.video.download_addr = play_url;
+  videos.video.download_suffix_logo_addr = play_url;
+  return videos;
 }
