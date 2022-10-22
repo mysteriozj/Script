@@ -4,7 +4,7 @@
 ^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\2.0\/user\/info\/*
 [MITM]
 hostname = 026965671aa6704b8cfc.myminapp.com
-*/
+
 
 var body = $response.body; 
 var obj = JSON.parse(body);
@@ -17,3 +17,29 @@ obj.download_count = 0;
 
 body = JSON.stringify(obj);
 $done({body});
+*/
+
+var obj = JSON.parse($response.body);
+if ($request.url.indexOf("/user/info/") != -1){
+obj = {
+"id" : 492072433804665,
+"_anonymous" : false,
+"is_vip" : true,
+"clarity_boost_max" : 1000,
+"created_at" : 1666435671,
+"created_by" : 492072433804665,
+"_email_verified" : false,
+"avatar" : "https://media.ifanrusercontent.com/hydrogen/default_avatar.png",
+"is_authorized" : true,
+"updated_at" : 1666436353,
+"_provider" : {
+
+},
+"is_admin" : true,
+"_phone_verified" : false,
+"_username" : "Piggy",
+"download_count" : 0
+}
+}
+
+$done({body: JSON.stringify(obj)});
