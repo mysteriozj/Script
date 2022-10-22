@@ -1,5 +1,5 @@
 /*
-万能小组件 Top Widgets
+万能小组件 Top Widgets  版本：3.8.0  2022.10.22
 
 ^https:\/\/top-widgets-api\.xiaozujian\.com\/api\/app\/config\/userConfig
 hostname = top-widgets-api.xiaozujian.com
