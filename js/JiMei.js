@@ -1,9 +1,9 @@
 /*
 集美
 ^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\2\.0\/user\/info\/492072433804665\/
-^https:\/\/*\.myminapp\.com\/hserve\/v\2\.0\/user\/info\/*\/
+^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\2.0\/user\/info\/*
 [MITM]
-hostname = *.myminapp.com
+hostname = 026965671aa6704b8cfc.myminapp.com
 */
 
 var body = $response.body; 
