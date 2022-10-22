@@ -1,7 +1,8 @@
 /*
 集美
 ^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\2\.0\/user\/info\/492072433804665\/
-^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\2.0\/user\/info\/*
+https://026965671aa6704b8cfc.myminapp.com/hserve/v2.4/table/user_wallpaper/record/
+^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\d.\d\/(user\/info|table\/user_wallpaper\/record)\/*
 [MITM]
 hostname = 026965671aa6704b8cfc.myminapp.com
 
@@ -23,7 +24,7 @@ var obj = JSON.parse($response.body);
 if ($request.url.indexOf("/user/info/") != -1){
 obj = {
 "id" : 492072433804665,
-"_anonymous" : false,
+"_anonymous" : true,
 "is_vip" : true,
 "clarity_boost_max" : 1000,
 "created_at" : 1666435671,
@@ -39,6 +40,20 @@ obj = {
 "_phone_verified" : false,
 "_username" : "Piggy",
 "download_count" : 0
+}
+}
+if ($request.url.indexOf("/table/user_wallpaper/record/") != -1){
+obj = {
+"meta" : {
+"previous" : null,
+"next" : null,
+"offset" : 0,
+"total_count" : 0,
+"limit" : 0
+},
+"objects" : [
+
+]
 }
 }
 
