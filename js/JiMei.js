@@ -2,7 +2,8 @@
 集美
 ^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\2\.0\/user\/info\/492072433804665\/
 https://026965671aa6704b8cfc.myminapp.com/hserve/v2.4/table/user_wallpaper/record/
-^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\d.\d\/(user\/info|table\/user_wallpaper\/record)\/*
+https://026965671aa6704b8cfc.myminapp.com/hserve/v2.4/table/downloads/record/
+^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\d.\d\/(user\/info|table\/user_wallpaper\/record|table\/downloads\/record)\/*
 [MITM]
 hostname = 026965671aa6704b8cfc.myminapp.com
 
@@ -55,6 +56,10 @@ obj = {
 
 ]
 }
+}
+if ($request.url.indexOf("/table/downloads/record/") != -1){
+obj.meta.total_count = 0;
+obj.meta.limit = 0;
 }
 
 $done({body: JSON.stringify(obj)});
