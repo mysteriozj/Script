@@ -1,6 +1,6 @@
 /*
 沙拉视频
-^https:\/\/bmall\.camera360\.com\/api\/iap\/check-server-time url script-response-body 
+^https:\/\/bmall\.camera360\.com\/api\/iap\/check-receipt url script-response-body 
 hostname = bmall.camera360.com
 */
 
