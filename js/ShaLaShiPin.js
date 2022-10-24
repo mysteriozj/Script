@@ -1,5 +1,6 @@
 /*
-沙拉视频
+沙拉视频  版本：8.2.5  2022.10.24
+人像大师  版本：3.1.9  2022.10.24
 ^https:\/\/bmall\.camera360\.com\/api\/iap\/check-receipt url script-response-body 
 hostname = bmall.camera360.com
 */
