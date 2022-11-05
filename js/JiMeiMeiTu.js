@@ -13,6 +13,8 @@ const p1 = '/hserve/v2.0/user/info';
 const p2 = '/hserve/v2.4/table/user_wallpaper/record';
 if (url.indexOf(p1) != -1) {
     obj.is_vip = true;
+	obj.is_authorized = true;
+	obj._provider.is_admin = true;
     body = JSON.stringify(obj);
 } 
 if (url.indexOf(p2) != -1) {
