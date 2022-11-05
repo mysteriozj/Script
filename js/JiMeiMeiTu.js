@@ -2,7 +2,7 @@
 集美美图  
 ^https://026965671aa6704b8cfc.myminapp.com/hserve/v2.0/user/info/492072433804665/
 ^https://026965671aa6704b8cfc.myminapp.com/hserve/v2.4/table/user_wallpaper/record/
-^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\d\.\d\/(user\/info\/*\/|table\/user_wallpaper\/record\/) url script-response-body 
+^https:\/\/026965671aa6704b8cfc\.myminapp\.com\/hserve\/v\d\.\d\/(user\/info|table\/user_wallpaper\/record) url script-response-body 
 
 hostname = 026965671aa6704b8cfc.myminapp.com
 */
