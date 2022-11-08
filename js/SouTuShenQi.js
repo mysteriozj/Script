@@ -17,7 +17,7 @@ obj.data.vipType = 1;
 obj.data.vipLabelLevel = 1;
 obj.data.vipLabel = "永久会员";
 obj.data.isVirtual = 1;
-obj.data.vitalityVipPastDueTime = 1988983132;
+obj.data.vitalityVipPastDueTime = 1988983132000;
 
 body = JSON.stringify(obj);
 $done({body});
