@@ -13,7 +13,7 @@ hostname = wallpaper.soutushenqi.com
 var body = $response.body; 
 var obj = JSON.parse(body);
 
-obj.data.vipType = 1;
+obj.data.vipType = 1024;
 obj.data.vipLabelLevel = 1;
 obj.data.vipLabel = "永久会员";
 obj.data.isVirtual = 1;
