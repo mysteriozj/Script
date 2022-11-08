@@ -5,7 +5,7 @@
 更新时间：2022.11.08
 [rewrite_local]
 ^\
-^https:\/\/api\.revenuecat\.com\/v\d\/receipts url script-response-body 
+^https:\/\/buy\.itunes\.apple\.com\/verifyReceipt url script-response-body 
 
 [mitm] 
 hostname = buy.itunes.apple.com
