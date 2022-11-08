@@ -1,56 +1,13 @@
 /*
-
-^https?:\/\/buy\.itunes\.apple\.com\/verifyReceipt$ url script-response-body 
+脚本功能：TokCam 恢复购买
+软件版本：1.8.63
+下载地址：https://apps.apple.com/cn/app/id1522192046
+更新时间：2022.11.08
+[rewrite_local]
+^\
+^https:\/\/api\.revenuecat\.com\/v\d\/receipts url script-response-body 
 
 [mitm] 
-
 hostname = buy.itunes.apple.com
-*
-*
 */
-
-
-var objc = JSON.parse($response.body);
-
-    objc = 
-{
-  "receipt" : {
-    "receipt_type" : "Production",
-    "app_item_id" : 1522192046,
-    "receipt_creation_date" : "2022-02-11 02:26:22 Etc/GMT",
-    "bundle_id" : "com.muyin.camera",
-    "original_purchase_date" : "2020-09-09 01:01:59 Etc/GMT",
-    "in_app" : [
-      {
-        "quantity" : "1",
-        "purchase_date_ms" : "1642850859000",
-        "transaction_id" : "350001102215973",
-        "is_trial_period" : "false",
-        "original_transaction_id" : "350001102215973",
-        "purchase_date" : "2022-01-22 11:27:39 Etc/GMT",
-        "product_id" : "incentive01",
-        "original_purchase_date_pst" : "2022-01-22 03:27:39 America/Los_Angeles",
-        "in_app_ownership_type" : "PURCHASED",
-        "original_purchase_date_ms" : "1642850859000",
-        "purchase_date_pst" : "2022-01-22 03:27:39 America/Los_Angeles",
-        "original_purchase_date" : "2022-01-22 11:27:39 Etc/GMT"
-      }
-    ],
-    "adam_id" : 1522192046,
-    "receipt_creation_date_pst" : "2022-02-10 18:26:22 America/Los_Angeles",
-    "request_date" : "2022-02-11 02:28:49 Etc/GMT",
-    "request_date_pst" : "2022-02-10 18:28:49 America/Los_Angeles",
-    "version_external_identifier" : 846803077,
-    "request_date_ms" : "1644546529150",
-    "original_purchase_date_pst" : "2020-09-08 18:01:59 America/Los_Angeles",
-    "application_version" : "202201230001",
-    "original_purchase_date_ms" : "1599613319000",
-    "receipt_creation_date_ms" : "1644546382000",
-    "original_application_version" : "2020090601",
-    "download_id" : 75077048258874
-  },
-  "status" : 0,
-  "environment" : "Production"
-};
-
-$done({ body : JSON.stringify(objc) });
+var _0xod9='jsjiami.com.v6',_0xod9_=['‮_0xod9'],_0x2157=[_0xod9,'Hyo4wqI=','wr0Zw7VhwpbDkA0KAS5yw4ozwrDDo8KO','w6BWAnB2w4Zaw4ITw6/CqsOMAjfDmW3DplXDgHvChcKmZi4Ow7PDmg==','w65fw77CgErDqXLDu8OWUxMoPw==','wqLCpTTCh8K2','wplOVAcGVCrClMKdwqDCij3DpXJw','CMKdwpJ6ZsO+UxtXEcOEPmpXw45lQmTCoS9Iw4NEw5hhwr7DoQ==','w5TCvGA6wo0JwoINwojDj8Oi','LcOJNsKPLcKRw6dcw4jCjcO0X8KRw4ZtHsKrGcOqwp8NZ8K0w5XDsBgiwq1+G0PCqMKRTcKmKMKKwrAh','wqrChsOwHsKjwrBaw7XDlA==','AcKGIsO/wpNmJCvCucKOYjJuw7YfRsOywo0xw6jDlcKoPsKJHAQrJsKmwr3Ck8KeFQbDt8ObSRvDrQ==','FMKyw7Efw741PcKww47DtWJjwpvDiwFHAx5nNMKew77CmMO/MkUA','w61Zw7jCgF/DrHDDrsOSWgMpN8OvS8Oaw7FOwr1fTMO6LnADwqnChXzDuMOXwpxTwqnDkUxfd2tB','CMKdwpJ6ZsO+UBtUEsOEP2lXw45qQmPCoS9Iw4NEw5hhwr7DoQ==','TTcSwqPDtm5lGyzDucK4OF0=','woohw58BYMOKw5kCICNswpBuIhhZw6JqWgliY8KJM8OswoR6w4HCrMOofkPCrxktw44+w4Q5','w7bDtGrDhsOjesKJw5Myw7nDusKD','KQfjsZBjiaCDNmi.com.gv6xHrrRQ=='];if(function(_0x4e3c49,_0x2b802b,_0xe4cb99){function _0x23401d(_0x2da3e9,_0x57ec86,_0xc306f6,_0x374110,_0x1c95c2,_0x49487b){_0x57ec86=_0x57ec86>>0x8,_0x1c95c2='po';var _0x18b0d1='shift',_0x255037='push',_0x49487b='‮';if(_0x57ec86<_0x2da3e9){while(--_0x2da3e9){_0x374110=_0x4e3c49[_0x18b0d1]();if(_0x57ec86===_0x2da3e9&&_0x49487b==='‮'&&_0x49487b['length']===0x1){_0x57ec86=_0x374110,_0xc306f6=_0x4e3c49[_0x1c95c2+'p']();}else if(_0x57ec86&&_0xc306f6['replace'](/[KQfZBCDNgxHrrRQ=]/g,'')===_0x57ec86){_0x4e3c49[_0x255037](_0x374110);}}_0x4e3c49[_0x255037](_0x4e3c49[_0x18b0d1]());}return 0x11128e;};return _0x23401d(++_0x2b802b,_0xe4cb99)>>_0x2b802b^_0xe4cb99;}(_0x2157,0x77,0x7700),_0x2157){_0xod9_=_0x2157['length']^0x77;};function _0x19b2(_0x432349,_0xbacc4e){_0x432349=~~'0x'['concat'](_0x432349['slice'](0x1));var _0x4ba569=_0x2157[_0x432349];if(_0x19b2['MqNdpR']===undefined){(function(){var _0x126fd8=typeof window!=='undefined'?window:typeof process==='object'&&typeof require==='function'&&typeof global==='object'?global:this;var _0x2fd957='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';_0x126fd8['atob']||(_0x126fd8['atob']=function(_0x4abb2d){var _0x4f4995=String(_0x4abb2d)['replace'](/=+$/,'');for(var _0x4fc67d=0x0,_0x49005b,_0xd6ba94,_0x4c743c=0x0,_0x24f1ab='';_0xd6ba94=_0x4f4995['charAt'](_0x4c743c++);~_0xd6ba94&&(_0x49005b=_0x4fc67d%0x4?_0x49005b*0x40+_0xd6ba94:_0xd6ba94,_0x4fc67d++%0x4)?_0x24f1ab+=String['fromCharCode'](0xff&_0x49005b>>(-0x2*_0x4fc67d&0x6)):0x0){_0xd6ba94=_0x2fd957['indexOf'](_0xd6ba94);}return _0x24f1ab;});}());function _0x50f403(_0x2a0b5e,_0xbacc4e){var _0x1c3b79=[],_0x4e54ec=0x0,_0x1e76da,_0x5859bc='',_0x41c4b4='';_0x2a0b5e=atob(_0x2a0b5e);for(var _0x25c3a9=0x0,_0x37b644=_0x2a0b5e['length'];_0x25c3a9<_0x37b644;_0x25c3a9++){_0x41c4b4+='%'+('00'+_0x2a0b5e['charCodeAt'](_0x25c3a9)['toString'](0x10))['slice'](-0x2);}_0x2a0b5e=decodeURIComponent(_0x41c4b4);for(var _0x28d9c7=0x0;_0x28d9c7<0x100;_0x28d9c7++){_0x1c3b79[_0x28d9c7]=_0x28d9c7;}for(_0x28d9c7=0x0;_0x28d9c7<0x100;_0x28d9c7++){_0x4e54ec=(_0x4e54ec+_0x1c3b79[_0x28d9c7]+_0xbacc4e['charCodeAt'](_0x28d9c7%_0xbacc4e['length']))%0x100;_0x1e76da=_0x1c3b79[_0x28d9c7];_0x1c3b79[_0x28d9c7]=_0x1c3b79[_0x4e54ec];_0x1c3b79[_0x4e54ec]=_0x1e76da;}_0x28d9c7=0x0;_0x4e54ec=0x0;for(var _0x565efc=0x0;_0x565efc<_0x2a0b5e['length'];_0x565efc++){_0x28d9c7=(_0x28d9c7+0x1)%0x100;_0x4e54ec=(_0x4e54ec+_0x1c3b79[_0x28d9c7])%0x100;_0x1e76da=_0x1c3b79[_0x28d9c7];_0x1c3b79[_0x28d9c7]=_0x1c3b79[_0x4e54ec];_0x1c3b79[_0x4e54ec]=_0x1e76da;_0x5859bc+=String['fromCharCode'](_0x2a0b5e['charCodeAt'](_0x565efc)^_0x1c3b79[(_0x1c3b79[_0x28d9c7]+_0x1c3b79[_0x4e54ec])%0x100]);}return _0x5859bc;}_0x19b2['KERsKq']=_0x50f403;_0x19b2['DYALJX']={};_0x19b2['MqNdpR']=!![];}var _0x145973=_0x19b2['DYALJX'][_0x432349];if(_0x145973===undefined){if(_0x19b2['YvtOux']===undefined){_0x19b2['YvtOux']=!![];}_0x4ba569=_0x19b2['KERsKq'](_0x4ba569,_0xbacc4e);_0x19b2['DYALJX'][_0x432349]=_0x4ba569;}else{_0x4ba569=_0x145973;}return _0x4ba569;};let obj=JSON['parse']($response[_0x19b2('‮0','SPl1')]);obj={'receipt':{'receipt_type':'Production','app_item_id':0x5abaceae,'receipt_creation_date':'2022-02-11\x2002:26:22\x20Etc/GMT','bundle_id':_0x19b2('‫1','X(^l'),'original_purchase_date':_0x19b2('‮2','I^KX'),'in_app':[{'quantity':'1','purchase_date_ms':_0x19b2('‫3','BU6a'),'transaction_id':'350001102215973','is_trial_period':_0x19b2('‮4','dSan'),'original_transaction_id':_0x19b2('‮5','Qi#U'),'purchase_date':_0x19b2('‮6','XY!('),'product_id':_0x19b2('‫7','EXlT'),'original_purchase_date_pst':_0x19b2('‫8','KpB1'),'in_app_ownership_type':_0x19b2('‫9','hRbO'),'original_purchase_date_ms':'1642850859000','purchase_date_pst':_0x19b2('‫a','20S['),'original_purchase_date':_0x19b2('‫b','R20)')}],'adam_id':0x5abaceae,'receipt_creation_date_pst':_0x19b2('‫c','BU6a'),'request_date':_0x19b2('‫d','XY!('),'request_date_pst':'2022-02-10\x2018:28:49\x20America/Los_Angeles','version_external_identifier':0x32793085,'request_date_ms':_0x19b2('‮e','XUnk'),'original_purchase_date_pst':_0x19b2('‮f','k)Wy'),'application_version':_0x19b2('‮10','dSan'),'original_purchase_date_ms':'1599613319000','receipt_creation_date_ms':'1644546382000','original_application_version':'2020090601','download_id':0x44483ccad13a},'status':0x0,'environment':'Production'};$done({'body':JSON['stringify'](obj)});;_0xod9='jsjiami.com.v6';
