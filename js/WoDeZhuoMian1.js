@@ -13,7 +13,7 @@ hostname = cs.kuso.xyz
 var body = $response.body; 
 var obj = JSON.parse(body);
 
-obj.data.lockscreen_noVip = 1,1;
+obj.data.lockscreen_noVip = 1.1;
 
 body = JSON.stringify(obj);
 $done({body});
